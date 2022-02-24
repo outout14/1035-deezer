@@ -1,0 +1,17 @@
+{
+    "debug": false,
+    "appID": 456,
+    "appSecret": "012345",
+    "baseAPI": "https://api.deezer.com/",
+    "callbackURL": "http://localhost:8080/callback",
+    "redisDB": {
+        "address": "localhost:6379",
+        "password": "",
+        "db": 0
+    },
+    "dns": {
+        "port": 5353,
+        "proto": "udp",
+        "domain": "deezer.test."
+    }
+}
