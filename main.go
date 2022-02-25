@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"net/http"
 	"os"
 	"strconv"
@@ -18,7 +19,10 @@ func checkErr(err error) {
 }
 
 func main() {
-	cli := newDeezerClient()
+	configPatch := flag.String("config", "config.json", "the patch to the config file")
+	flag.Parse()
+
+	cli := newDeezerClient(*configPatch)
 
 	if cli.config.Debug {
 		log.SetLevel(log.DebugLevel)

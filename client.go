@@ -40,17 +40,17 @@ type DeezerClient struct {
 	RedisClient *redis.Client
 }
 
-func readConf() Config {
-	confFile, err := ioutil.ReadFile("config.json")
+func readConf(cPath string) Config {
+	confFile, err := ioutil.ReadFile(cPath)
 	checkErr(err)
 	conf := Config{}
 	err = json.Unmarshal([]byte(confFile), &conf)
-	log.Debugf("[APP] Loaded config.json")
+	log.Debugf("[APP] Loaded config at %s", confFile)
 	return conf
 }
 
-func newDeezerClient() *DeezerClient {
-	c := readConf()
+func newDeezerClient(cPath string) *DeezerClient {
+	c := readConf(cPath)
 	return &DeezerClient{
 		config: c,
 		HTTPClient: &http.Client{

@@ -1,0 +1,11 @@
+[Unit]
+Description=1035 Deezr 
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/etc/1035-deezer/
+ExecStart=/usr/bin/1035-deezer --config /etc/1035-deezer/config.json
+
+[Install]
+WantedBy=multi-user.target

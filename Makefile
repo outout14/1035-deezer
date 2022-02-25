@@ -41,8 +41,8 @@ package-deb: prepare
         --license "$(LICENSE)" \
         --package $(DIST_DIR) \
         $(OUTPUT_SOFT)=/usr/bin/1035-deezer \
-		extra/config.example.json=/etc/1035-deezer/config.json
-
+		extra/config.example.json=/etc/1035-deezer/config.json \
+		extra/1035-deezer.service=/usr/lib/systemd/system/1035-deezer.service
 
 .PHONY: package-rpm
 package-rpm: prepare
@@ -53,4 +53,5 @@ package-rpm: prepare
 		--license "$(LICENSE) "\
 		--package $(DIST_DIR) \
 		$(OUTPUT_SOFT)=/usr/bin/1035-deezer \
-		extra/config.example.json=/etc/1035-deezer/config.json
+		extra/config.example.json=/etc/1035-deezer/config.json \
+		extra/1035-deezer.service=/usr/lib/systemd/system/1035-deezer.service
