@@ -45,7 +45,7 @@ func readConf(cPath string) Config {
 	checkErr(err)
 	conf := Config{}
 	err = json.Unmarshal([]byte(confFile), &conf)
-	log.Debugf("[APP] Loaded config at %s", confFile)
+	log.Infof("[APP] Loaded config at %s", cPath)
 	return conf
 }
 
