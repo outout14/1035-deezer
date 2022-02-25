@@ -16,7 +16,9 @@ A DNS response will be returned containing the last played title and it's perfor
 In theses examples, ``.dz.bb0.nl`` is the base domain and ``399552895`` is the user Deezer ID we are looking for. 
 
 ### Login
-If the user access token isn't registered in the Redis database, an Oauth authorization URL will be returned 
+If the user access token isn't registered in the Redis database, an Oauth authorization URL will be returned over DNS.
+
+Once logged, you will also get your Deezer user ID. 
 
 Example query : 
 ```

@@ -46,5 +46,7 @@ func (c *DeezerClient) doAuth(w http.ResponseWriter, r *http.Request) {
 	}).Debug("[REDIS] Set in DB")
 
 	fmt.Fprintf(w, "SUCCESS - Your account is now connected !\n")
+	fmt.Fprintf(w, "Your deezer user ID is %s\n", uid)
+
 	return
 }
