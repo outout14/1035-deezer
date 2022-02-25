@@ -35,7 +35,7 @@ build: prepare
 .PHONY: package-deb
 package-deb: prepare
 	fpm -s dir -t deb -n $(SOFT_NAME) -v $(VERSION_PKG) \
-        --description "$(DESCRIPTION)"  \
+        --description "$(DESCRIPTION)" \
         --url "$(URL)" \
         --architecture $(ARCH) \
         --license "$(LICENSE)" \
