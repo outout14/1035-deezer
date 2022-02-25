@@ -8,7 +8,7 @@ SOFT_NAME    := 1035-deezer
 SOFT_VERSION := $(shell git describe --tags $(git rev-list --tags --max-count=1))
 VERSION_PKG   := $(shell echo $(SOFT_VERSION) | sed 's/^v//g')
 ARCH          := x86_64
-LICENSE       := AGPL-3
+LICENSE       := MIT
 URL           := https://github.com/outout14/1035-deezer/
 DESCRIPTION   := Display your current Deezer listening over DNS
 BUILDINFOS    :=  ($(shell date +%FT%T%z)$(BUILDINFOSDET))
@@ -18,7 +18,7 @@ OUTPUT_SOFT := $(DIST_DIR)1035deezer-$(SOFT_VERSION)-$(GOOS)-$(ARCH)$(EXTENSION)
 
 .PHONY: vet
 vet:
-	go vet main.go
+	go vet
 
 .PHONY: prepare
 prepare:
@@ -43,13 +43,14 @@ package-deb: prepare
         $(OUTPUT_SOFT)=/usr/bin/1035-deezer \
 		extra/config.example.json=/etc/1035-deezer/config.json
 
+
 .PHONY: package-rpm
 package-rpm: prepare
 	fpm -s dir -t rpm -n $(SOFT_NAME) -v $(VERSION_PKG) \
-	--description "$(DESCRIPTION)" \
-	--url "$(URL)" \
-	--architecture $(ARCH) \
-	--license "$(LICENSE) "\
-	--package $(DIST_DIR) \
-	$(OUTPUT_SOFT)=/usr/bin/1035-deezer \
-	extra/config.example.json=/etc/1035-deezer/config.json
+		--description "$(DESCRIPTION)" \
+		--url "$(URL)" \
+		--architecture $(ARCH) \
+		--license "$(LICENSE) "\
+		--package $(DIST_DIR) \
+		$(OUTPUT_SOFT)=/usr/bin/1035-deezer \
+		extra/config.example.json=/etc/1035-deezer/config.json
